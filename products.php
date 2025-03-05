@@ -2,15 +2,18 @@
 // setup connection details
 $dsn = "mysql:
         host=localhost;
-        dbname=adv_php;
+        dbname=sherd_JimBelushi;
         charset=utf8;
         port=3306";
+        
 
 // create new PDO connection object with error messaging turned on
-$pdo = new PDO($dsn, "adv_php_user", "Secret", [
-  PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-]); // Password "S"
-
+try {
+  $pdo = new PDO($dsn, "sherd_JimBelushi", "adpujdB734kf3", [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+  echo " Database connection successful!";
+} catch (PDOException $e) {
+  die (" Database connection failed: " . $e->getMessage());
+}
 // create the db query in the PDO and assign it to a variable
 $stmt = $pdo->query("SELECT * FROM `products`");
 
